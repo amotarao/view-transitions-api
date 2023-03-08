@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
+import { items } from '../constants/data';
 import { useViewTransitions } from '../hooks/useViewTransitions';
-
-const ids = [1, 2, 3, 4, 5];
 
 const Page: NextPage = () => {
   const { onClick } = useViewTransitions();
@@ -11,7 +11,7 @@ const Page: NextPage = () => {
   return (
     <div>
       <ul className="grid grid-cols-1 gap-[16px]">
-        {ids.map((id) => (
+        {items.map(({ id, src }) => (
           <li key={id}>
             <Link className="flex items-center gap-[8px]" href={`/p/${id}`} onClick={onClick(`/p/${id}`)}>
               <div
@@ -21,7 +21,9 @@ const Page: NextPage = () => {
                     'view-transition-name': `thumbnail-${id}`,
                   } as CSSProperties
                 }
-              ></div>
+              >
+                <Image src={src} width={40} height={40} alt="" />
+              </div>
               <p>{id}</p>
             </Link>
           </li>

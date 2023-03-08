@@ -1,6 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { CSSProperties } from 'react';
+import { items } from '../../constants/data';
 import { useViewTransitions } from '../../hooks/useViewTransitions';
 
 export type Params = {
@@ -9,6 +11,7 @@ export type Params = {
 
 export type Props = {
   id: string;
+  src?: string;
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -28,12 +31,13 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
   return {
     props: {
       id: params.id,
+      src: items.find((item) => item.id === params.id)?.src,
     },
     revalidate: 60 * 60,
   };
 };
 
-const Page: NextPage<Props> = ({ id }) => {
+const Page: NextPage<Props> = ({ id, src }) => {
   const { onClick } = useViewTransitions();
 
   return (
@@ -50,7 +54,9 @@ const Page: NextPage<Props> = ({ id }) => {
             'view-transition-name': `thumbnail-${id}`,
           } as CSSProperties
         }
-      ></div>
+      >
+        {src && <Image src={src} width={360} height={360} alt="" />}
+      </div>
       <p className="mt-[16px] text-center">{id}</p>
     </div>
   );
