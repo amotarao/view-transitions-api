@@ -10,12 +10,12 @@ export const useViewTransitions = () => {
       await router.push(to);
     };
 
-    if (!document.startViewTransition) {
+    if (!(document as any).startViewTransition) {
       push();
       return;
     }
 
-    document.startViewTransition(() => push());
+    (document as any).startViewTransition(() => push());
   };
 
   return {

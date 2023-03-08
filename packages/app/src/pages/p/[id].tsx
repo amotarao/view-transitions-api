@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
+import { CSSProperties } from 'react';
 import { useViewTransitions } from '../../hooks/useViewTransitions';
 
 export type Params = {
@@ -44,9 +45,11 @@ const Page: NextPage<Props> = ({ id }) => {
       </p>
       <div
         className="mx-auto aspect-[1/1] w-[360px] bg-slate-300"
-        style={{
-          'view-transition-name': `thumbnail-${id}`,
-        }}
+        style={
+          {
+            'view-transition-name': `thumbnail-${id}`,
+          } as CSSProperties
+        }
       ></div>
       <p className="mt-[16px] text-center">{id}</p>
     </div>
