@@ -51,7 +51,7 @@ const Page: NextPage<Props> = ({ id, src }) => {
         className="relative mx-auto aspect-[1/1] w-full max-w-[360px] bg-slate-300"
         style={
           {
-            'view-transition-name': `thumbnail-${id}`,
+            viewTransitionName: `thumbnail-${id}`,
           } as CSSProperties
         }
       >

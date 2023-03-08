@@ -18,7 +18,7 @@ const Page: NextPage = () => {
                 className="aspect-[1/1] w-[40px] bg-slate-300"
                 style={
                   {
-                    'view-transition-name': `thumbnail-${id}`,
+                    viewTransitionName: `thumbnail-${id}`,
                   } as CSSProperties
                 }
               >
