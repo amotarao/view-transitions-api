@@ -37,14 +37,14 @@ const Page: NextPage<Props> = ({ id }) => {
   const { onClick } = useViewTransitions();
 
   return (
-    <div className="mx-auto max-w-[640px]">
+    <div>
       <p className="mb-[16px]">
         <Link className="text-[16px] font-bold" href="/" onClick={onClick('/')}>
           戻る
         </Link>
       </p>
       <div
-        className="mx-auto aspect-[1/1] w-[360px] bg-slate-300"
+        className="mx-auto aspect-[1/1] w-full max-w-[360px] bg-slate-300"
         style={
           {
             'view-transition-name': `thumbnail-${id}`,

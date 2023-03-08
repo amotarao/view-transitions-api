@@ -9,7 +9,7 @@ const Page: NextPage = () => {
   const { onClick } = useViewTransitions();
 
   return (
-    <div className="mx-auto max-w-[640px]">
+    <div>
       <ul className="grid grid-cols-1 gap-[16px]">
         {ids.map((id) => (
           <li key={id}>
