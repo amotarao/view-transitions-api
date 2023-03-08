@@ -1,34 +1,29 @@
-import { UrlObject } from 'url';
+import { Url } from 'next/dist/shared/lib/router/router';
 import { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export const useViewTransitions = () => {
-  const router = useRouter();
-
   const [isNotSupported, setIsNotSupported] = useState(false);
   useEffect(() => {
     !(document as any).startViewTransition && setIsNotSupported(true);
   }, []);
 
-  const push = (to: string | UrlObject) => {
-    const push = async () => {
-      await router.push(to);
-    };
+  const router = useRouter();
 
+  const push = (to: Url) => {
     if (!(document as any).startViewTransition) {
-      push();
+      router.push(to);
       return;
     }
-
-    (document as any).startViewTransition(() => push());
+    (document as any).startViewTransition(() => router.push(to));
   };
 
   return {
     isNotSupported,
     push,
     onClick:
-      (to: string | UrlObject): LinkProps['onClick'] =>
+      (to: Url): LinkProps['onClick'] =>
       (e) => {
         e.preventDefault();
         push(to);
