@@ -48,14 +48,19 @@ const Page: NextPage<Props> = ({ id, src }) => {
         </Link>
       </p>
       <div
-        className="mx-auto aspect-[1/1] w-full max-w-[360px] bg-slate-300"
+        className="relative mx-auto aspect-[1/1] w-full max-w-[360px] bg-slate-300"
         style={
           {
             'view-transition-name': `thumbnail-${id}`,
           } as CSSProperties
         }
       >
-        {src && <Image src={src} width={360} height={360} alt="" />}
+        {src && (
+          <>
+            <Image className="absolute top-0 left-0 h-full w-full" src={src} width={40} height={40} alt="" />
+            <Image className="absolute top-0 left-0 h-full w-full" src={src} width={360} height={360} alt="" />
+          </>
+        )}
       </div>
       <p className="mt-[16px] text-center">{id}</p>
     </div>
