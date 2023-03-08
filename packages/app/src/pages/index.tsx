@@ -5,14 +5,14 @@ import { useViewTransitions } from '../hooks/useViewTransitions';
 const ids = [1, 2, 3, 4, 5];
 
 const Page: NextPage = () => {
-  const { push } = useViewTransitions();
+  const { onClick } = useViewTransitions();
 
   return (
     <div className="mx-auto max-w-[640px]">
       <ul className="grid grid-cols-1 gap-[16px]">
         {ids.map((id) => (
           <li key={id}>
-            <Link className="flex items-center gap-[8px]" href={`/p/${id}`} onClick={push(`/p/${id}`)}>
+            <Link className="flex items-center gap-[8px]" href={`/p/${id}`} onClick={onClick(`/p/${id}`)}>
               <div
                 className="aspect-[1/1] w-[40px] bg-slate-300"
                 style={{

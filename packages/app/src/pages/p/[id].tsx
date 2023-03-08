@@ -33,12 +33,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 };
 
 const Page: NextPage<Props> = ({ id }) => {
-  const { push } = useViewTransitions();
+  const { onClick } = useViewTransitions();
 
   return (
     <div className="mx-auto max-w-[640px]">
       <p className="mb-[16px]">
-        <Link className="text-[16px] font-bold" href="/" onClick={push('/')}>
+        <Link className="text-[16px] font-bold" href="/" onClick={onClick('/')}>
           戻る
         </Link>
       </p>
