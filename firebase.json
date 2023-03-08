@@ -10,8 +10,8 @@
         "firebase-debug.*.log"
       ],
       "predeploy": [
-        "yarn workspace @projectname/functions lint",
-        "yarn workspace @projectname/functions build"
+        "yarn workspace @view-transitions-api/functions lint",
+        "yarn workspace @view-transitions-api/functions build"
       ]
     }
   ],

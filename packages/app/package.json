@@ -1,5 +1,5 @@
 {
-  "name": "@projectname/app",
+  "name": "@view-transitions-api/app",
   "version": "0.0.0",
   "private": true,
   "scripts": {

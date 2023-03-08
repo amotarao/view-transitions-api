@@ -1,5 +1,5 @@
 {
-  "name": "@projectname/functions",
+  "name": "@view-transitions-api/functions",
   "version": "0.0.0",
   "private": true,
   "engines": {
