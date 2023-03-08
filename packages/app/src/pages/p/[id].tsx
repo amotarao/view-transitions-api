@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
+import { useViewTransitions } from '../../hooks/useViewTransitions';
 
 export type Params = {
   id: string;
@@ -32,17 +33,22 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 };
 
 const Page: NextPage<Props> = ({ id }) => {
+  const { push } = useViewTransitions();
+
   return (
     <div className="mx-auto max-w-[640px]">
-      <Link href="/">戻る</Link>
+      <p className="mb-[16px]">
+        <Link className="text-[16px] font-bold" href="/" onClick={push('/')}>
+          戻る
+        </Link>
+      </p>
       <div
-        className="aspect-[1/1] w-[360px] bg-slate-300"
+        className="mx-auto aspect-[1/1] w-[360px] bg-slate-300"
         style={{
           'view-transition-name': `thumbnail-${id}`,
-          contain: 'paint',
         }}
       ></div>
-      <p>{id}</p>
+      <p className="mt-[16px] text-center">{id}</p>
     </div>
   );
 };
